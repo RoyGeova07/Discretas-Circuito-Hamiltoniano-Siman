@@ -3,14 +3,45 @@
 Resumen de qué hace `farmacias_siman_hamiltoniano.ipynb` con el archivo
 `Datos_SucursalesSimán.xlsx`.
 
-## ¿Qué problema resuelve?
+## El problema de la empresa
 
-Para cada una de las **3 ubicaciones candidatas** (A, B y C) donde NetGuard
-Solutions podría instalar su sede técnica, el notebook verifica y mide el
-recorrido que tendría que hacer un técnico para revisar, en **cada uno de los
-5 bloques**, todas las sucursales de ese bloque una sola vez y regresar al
-punto de partida (el candidato). En total evalúa **15 circuitos**
-(3 candidatos × 5 bloques).
+**NetGuard Solutions** brinda servicio de monitoreo y mantenimiento de
+sistemas IoT (sensores de temperatura, cámaras, contadores de aforo y
+controladores de refrigeración) instalados en las sucursales de Farmacias
+Simán en San Pedro Sula.
+
+La empresa necesita que sus técnicos revisen periódicamente cada sucursal
+**sin repetir ninguna** y **regresando al punto de partida**, para no
+desperdiciar tiempo ni combustible. Además, la gerencia evalúa abrir una
+**sede técnica** desde la cual despachar a los técnicos, y quiere elegir su
+ubicación con base en datos reales de conectividad — no por intuición.
+
+En concreto, hacía falta responder:
+
+1. ¿Cómo dividir la red completa de sucursales en bloques manejables?
+2. ¿Existe una ruta (circuito Hamiltoniano) que visite cada sucursal de un
+   bloque exactamente una vez y regrese al inicio? ¿Cuánto mide esa ruta?
+3. De las 3 ubicaciones candidatas para la sede técnica, ¿cuál conviene más
+   según la distancia real que tendría que recorrer un técnico saliendo de
+   ahí?
+
+## Cómo se resolvió
+
+Se registraron en campo (Google Maps) las sucursales, se agruparon en
+**5 bloques** geográficos, y para cada uno de los **3 candidatos de sede**
+(A, B y C) se trazó a mano el recorrido que sale del candidato, visita cada
+sucursal del bloque una vez, y vuelve — con su distancia de ida y de vuelta
+en km. Todo esto quedó registrado en la hoja `Candidatos Bloques` del Excel.
+
+El notebook toma esos datos y:
+
+- **Verifica matemáticamente** que cada uno de esos 15 recorridos
+  (3 candidatos × 5 bloques) sea en efecto un circuito Hamiltoniano válido
+  (aplica los teoremas de Dirac y Ore, y lo confirma por backtracking).
+- **Calcula la distancia total** de cada circuito.
+- **Compara los 3 candidatos** sumando la distancia de sus 5 circuitos junto
+  con el costo y área de alquiler de cada sede, y **recomienda cuál conviene
+  más** — respondiendo así la pregunta de negocio original.
 
 ## Fuente de datos: hoja "Candidatos Bloques"
 
