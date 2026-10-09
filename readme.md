@@ -33,6 +33,9 @@ Se registraron en campo (Google Maps) las sucursales, se agruparon en
 sucursal del bloque una vez, y vuelve — con su distancia de ida y de vuelta
 en km. Todo esto quedó registrado en la hoja `Candidatos Bloques` del Excel.
 
+<img width="573" height="459" alt="image" src="https://github.com/user-attachments/assets/16c0b405-7c4a-4d52-834e-ba7d14f3ab65" />
+
+
 El notebook toma esos datos y:
 
 - **Verifica matemáticamente** que cada uno de esos 15 recorridos
